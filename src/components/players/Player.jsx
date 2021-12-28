@@ -4,6 +4,7 @@ import Card from '../cards/Card';
 import HiddenCard from '../cards/HiddenCard';
 
 import PlayerStatusNotificationBox from "./PlayerStatusNotificationBox";
+import TinyFlag from "tiny-flag-react";
 
 const dealerChipImageURL = "/assets/chip.svg";
 const chipCountImageURL = "./assets/chips.svg";
@@ -23,6 +24,8 @@ const Player = (props) => {
       folded,
       cards,
       avatarURL,
+      country,
+      nat,
       name,
       chips,
       bet
@@ -96,9 +99,10 @@ const Player = (props) => {
             src={avatarURL} 
             alt="Player Avatar" 
           />
-          <h5 className="player-info--name" style={{'fontSize': (name.length < 14) ? 12 : 10}}>
-            {`${name}`}
-          </h5>
+         
+          <span className="player-info--name" style={{'fontSize': (name.length < 14) ? 12 : 10}}>
+          <span style={{ fontSize: 18}} ><TinyFlag country={`${nat}`} alt={`${country}`} /></span><span style={{ paddingTop: 7 +'px', paddingLeft: 2 +'px'}}>{`${name}`}</span>
+          </span>
           <div className="player-info--stash--container">
             <img className="player-info--stash--image" src={chipCountImageURL} alt="Player Stash"/>
             <h5>{`${chips}`}</h5>

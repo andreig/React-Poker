@@ -1,4 +1,4 @@
-import "@babel/polyfill";
+//import "@babel/polyfill";
 
 import 'core-js/es6/map';
 import 'core-js/es6/set';
@@ -416,6 +416,7 @@ imageLoaderRequest.send();
       </div>
     )
   }
+  
   render() {
     return (
       <div className="App">
