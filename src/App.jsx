@@ -48,6 +48,8 @@ import {
 
 import { cloneDeep } from 'lodash';
 
+import soundChips from 'assets/sounds/chips.wav';
+
 class App extends Component {
   state = {
     loading: true,
@@ -65,7 +67,7 @@ class App extends Component {
     highBet: null,
     betInputValue: null,
     sidePots: [],
-    minBet: 20,
+    minBet: 10,
     phase: 'loading',
     playerHierarchy: [],
     showDownMessages: [],
@@ -187,6 +189,8 @@ imageLoaderRequest.send();
   }
 
   handleBetInputSubmit = (bet, min, max) => {
+    //TODO: UBER BAD SOUND PLACEMENT, move out and provide sound on / off controls
+    new Audio(soundChips).play();
     const {playerAnimationSwitchboard, ...appState} = this.state;
     const { activePlayerIndex } = appState;
     this.pushAnimationState(activePlayerIndex, `${renderActionButtonText(this.state.highBet, this.state.betInputValue, this.state.players[this.state.activePlayerIndex])} ${(bet > this.state.players[this.state.activePlayerIndex].bet) ? (bet) : ""}`);;
@@ -224,7 +228,7 @@ imageLoaderRequest.send();
       }, () => {
         if((this.state.players[this.state.activePlayerIndex].robot) && (this.state.phase !== 'showdown')) {
           setTimeout(() => {
-          
+            
             this.handleAI()
           }, 1200)
         }
